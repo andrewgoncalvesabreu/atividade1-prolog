@@ -1,34 +1,32 @@
-%exercicio 1 - variaveis
+%exercicio 3 - disjuncao
 
-gosta(joao, futebol).
-gosta(maria, musica).
-gosta(pedro, futebol).
-gosta(ana, jogos).
-gosta(lucas, musica).
+professor(claudio).
+professor(ranyelson).
+professor(joao).
+professor(marcelo).
 
-%consultas: 
+coordenador(wendell).
+coordenador(hially).
+coordenador(kleber).
 
-%Quem gosta de futebol: gosta(X, futebol).
-%Quem gosta de música: gosta(X, musica).
-%do que ana gosta: gosta(ana, X).
-%todas as pessoas e seus respectivos gostos: gosta(X, G).
+%regra deve ser se for professor ou diretor pode entrar na sala.
 
-%exercicio 2 - regras
+pode_entrar(X) :-
+    professor(X);
+    coordenador(X).
 
-aluno(andrew).
-aluno(gersiane).
-aluno(guilherme).
-aluno(davi).
-matriculado(andrew).
-matriculado(davi).
-matriculado(guilherme).
+%exercicio 4 - conjuncao e disjuncao
 
-%se for aluno e estiver matriculado pode acessar o sistema
+aluno(pedro).
+aluno(maria).
+aluno(paulo).
 
-pode_acessar(X) :-
+autorizacao(paulo).
+autorizacao(maria).
+
+%regra = acessar o laboratorio se for professor ou aluno e tenha autorizacao
+
+acesso_laboratorio(X) :-
+    professor(X);
     aluno(X),
-    matriculado(X).
-
-%verificar se uma pessoa especifica pode acessar (andrew e gersiane): pode_acessar(andrew) TRUE pode_acessar(gersiane) FALSE
-
-%todas as pessoas que podem acessar o sistema: pode_acessar(X)
+    autorizacao(X).
